@@ -21,6 +21,17 @@ app.post('/todos',(req,res)=>{
     });
 });
 
+app.get('/todos',(req,res)=>{
+    Todo.find().then((doc)=>{
+        res.send({
+            doc,
+            'code' : 'okk'
+        });
+    },(err)=>{
+        res.status(400).send(err);
+    });
+});
+
 app.listen(3000,()=>{
     console.log('Server up and lintening to port 3000');
 });
